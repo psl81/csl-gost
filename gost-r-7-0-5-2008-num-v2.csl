@@ -2,8 +2,8 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0">
   <info>
     <title>Russian GOST R 7.0.5-2008 numeric v2</title>
-    <id>http://www.zotero.org/styles/gost-r-7-0-5-2008-num-chrono</id>
-    <link href="" rel="self"/>
+    <id>https://github.com/plyubutin/csl-gost/raw/master/gost-r-7-0-5-2008-num-v2.csl</id>
+    <link href="https://github.com/plyubutin/csl-gost/raw/master/gost-r-7-0-5-2008-num-v2.csl" rel="self"/>
     <author>
       <name>Roman Raspopov</name>
       <email>romanraspopov@gmail.com</email>
