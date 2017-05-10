@@ -15,7 +15,7 @@
     </contributor>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
-    <updated>2017-05-05T12:11:04+00:00</updated>
+    <updated>2017-05-10T16:35:04+00:00</updated>
     <summary>
       Russian GOST-2008 style.
       Основан на стиле gost-r-7-0-5-2008-num-chrono Романа Распопова.
@@ -29,6 +29,7 @@
       например:
         Т. 17, № 2
         Vol. 18, N 1
+      Для типа "Диссертация" (Thesis) в области ответственности выводится полное имя автора.
     </summary>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>    
   </info>
@@ -157,7 +158,7 @@
     <names variable="author" suffix=". ">
       <!-- Добавить запятую между фамилией и инициалами автора: sort-separator=",&#160;", иначе sort-separator="&#160;" -->
       <!-- Сделать шрифт фамилий и инициалов авторов наклонным: font-style="italic", иначе font-style="normal" -->
-      <name et-al-min="2" et-al-use-first="1" suppress-min="4" initialize-with="." font-style="normal" name-as-sort-order="first" sort-separator="&#160;"/> 
+      <name et-al-min="2" et-al-use-first="1" suppress-min="4" initialize-with="." font-style="normal" name-as-sort-order="first" sort-separator=",&#160;"/> 
       <et-al term="and others"/>
     </names>
     <text variable="title"/>
@@ -185,6 +186,13 @@
     <names variable="author">
       <label form="short" prefix=" " suffix=". " text-case="lowercase" strip-periods="true"/>
       <name et-al-min="4" et-al-use-first="1" delimiter=", " initialize-with="."/>      
+    </names>
+  </macro>
+
+  <macro name="second-position-thesis-authors-only">
+    <names variable="author">
+      <label prefix=" " suffix=". " text-case="lowercase" strip-periods="true"/>
+      <name form="long" name-as-sort-order="all" sort-separator=" "/>
     </names>
   </macro>
 
@@ -351,7 +359,7 @@
               <text macro="author-title"/>
               <text variable="genre"/>
             </group>
-            <text macro="second-position-authors-only"/>
+            <text macro="second-position-thesis-authors-only"/>
           </group>            
           <text macro="publisher"/>            
           <text macro="number-of-pages"/>
