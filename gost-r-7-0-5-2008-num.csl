@@ -269,11 +269,11 @@
 
   <macro name="issue">
     <choose>
-      <if variable="issue">
+      <if variable="issue" is-numeric="issue">
         <label variable="issue" form="short" prefix="" suffix="&#160;" text-case="capitalize-first"/>
-        <text variable="issue"/>
-      </if>      
+      </if>
     </choose>
+    <text variable="issue"/>
   </macro>
 
   <macro name="volumes">
