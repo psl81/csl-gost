@@ -30,6 +30,7 @@
         Т. 17, № 2
         Vol. 18, N 1
       Для типа "Диссертация" (Thesis) в области ответственности выводится полное имя автора.
+      Добавлено форматирование типа "Патент" (Patent)
     </summary>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>    
   </info>
@@ -54,7 +55,8 @@
       <term name="editortranslator" form="short">
         <single>ed. &amp; trans.</single>
         <multiple>eds. &amp; trans.</multiple>
-      </term>   
+      </term>
+      <term name="issued" form="short">iss.</term>
     </terms>
   </locale>
 
@@ -78,7 +80,10 @@
       <term name="editortranslator" form="short">
         <single>ред. и пер.</single>
         <multiple>ред. и пер.</multiple>
-      </term>     
+      </term>
+      <term name="issued" form="short">опубл.</term>
+      <term name="submitted" form="short">заявл.</term>
+      <term name="call-number" form="short">№</term>
 
       <!-- SHORT MONTH FORMS -->
       <term name="month-01" form="short">янв.</term>
@@ -189,6 +194,13 @@
     </names>
   </macro>
 
+  <macro name="second-position-patent-authors-only">
+    <names variable="author">
+      <label form="short" prefix=" " suffix=". " text-case="lowercase" strip-periods="true"/>
+      <name et-al-subsequent-min="4" et-al-min="6" et-al-use-first="1" name-as-sort-order="all" sort-separator=" " delimiter=", " initialize-with="."/>      
+    </names>
+  </macro>
+
   <macro name="second-position-thesis-authors-only">
     <names variable="author">
       <label prefix=" " suffix=". " text-case="lowercase" strip-periods="true"/>
@@ -289,7 +301,22 @@
       </if>      
     </choose>
   </macro>
-  
+
+  <macro name="issued">
+    <label variable="issued" form="short" suffix="&#160;"/>
+    <date variable="issued" form="numeric"/>
+  </macro>
+
+  <macro name="submitted">
+    <label variable="submitted" form="short" suffix="&#160;"/>
+    <date variable="submitted" form="numeric"/>
+  </macro>
+
+  <macro name="call-number">
+    <label variable="call-number" form="short" prefix=". " suffix="&#160;"/>
+    <text variable="call-number"/>
+  </macro>
+
 <!--_______________________________________________________________________________
 
     ______________________________ ССЫЛКИ В ТЕКСТЕ ________________________________
@@ -458,6 +485,29 @@
           </group>            
           <text variable="URL" prefix="Режим доступа: "/>
         </group>
+      </else-if>
+<!--_______________________________________________________________________________
+    ____________________________________ Патент ___________________________________
+    _______________________________________________________________________________ -->
+      <else-if type="patent">
+        <group delimiter="; " prefix="">
+          <group delimiter=" / ">
+            <group delimiter=" : ">
+              <text variable="title"/>
+              <text variable="number" prefix="пат. "/>
+              <text variable="note"/>
+              <text variable="container-title"/>
+            </group>
+            <group>
+              <text macro="second-position-patent-authors-only"/>
+              <text variable="publisher" prefix="; заявитель&#160;"/>
+              <text macro="call-number"/>
+            </group>
+          </group>
+          <text macro="submitted"/>
+          <text macro="issued"/>
+        </group>
+        <text variable="volume" prefix=",&#160;"/>
       </else-if>
 <!--_______________________________________________________________________________
     _____________________________ Другие типы источников __________________________
