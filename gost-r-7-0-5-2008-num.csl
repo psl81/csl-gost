@@ -76,7 +76,7 @@
         <single>пер.</single>
         <multiple>пер.</multiple>
       </term>
-      <term name="editor" form="short">под ред.</term>
+      <term name="editor" form="short">ред.</term>
       <term name="editortranslator" form="short">
         <single>ред. и пер.</single>
         <multiple>ред. и пер.</multiple>
