@@ -76,7 +76,7 @@
         <single>пер.</single>
         <multiple>пер.</multiple>
       </term>
-      <term name="editor" form="short">под ред.</term>
+      <term name="editor" form="short">ред.</term>
       <term name="editortranslator" form="short">
         <single>ред. и пер.</single>
         <multiple>ред. и пер.</multiple>
@@ -167,6 +167,7 @@
       <et-al term="and others"/>
     </names>
     <text variable="title"/>
+    <text macro="edition" prefix=" "/>
   </macro>
 
   <macro name="author-title-medium">
@@ -315,6 +316,20 @@
   <macro name="call-number">
     <label variable="call-number" form="short" prefix=". " suffix="&#160;"/>
     <text variable="call-number"/>
+  </macro>
+
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix="."/>
+      </else>
+    </choose>
   </macro>
 
 <!--_______________________________________________________________________________
