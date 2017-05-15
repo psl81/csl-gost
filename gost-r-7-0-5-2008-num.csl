@@ -332,6 +332,14 @@
     </choose>
   </macro>
 
+  <macro name="accessed">
+    <date variable="accessed" prefix="дата обращения: ">
+      <date-part name="day" suffix="."/>
+      <date-part name="month" form="numeric" suffix="."/>
+      <date-part name="year" />
+    </date>
+  </macro>
+
 <!--_______________________________________________________________________________
 
     ______________________________ ССЫЛКИ В ТЕКСТЕ ________________________________
@@ -478,7 +486,7 @@
             </group>
             <text variable="container-title"/>            
           </group>
-          <text macro="year-date"/>                  
+          <text macro="year-date"/>
           <text macro="day-month"/>          
           <text macro="page"/>
         </group>
@@ -487,18 +495,22 @@
     ___________ ЭЛЕКТРОННЫЙ РЕСУРС УДАЛЕННОГО ДОСТУПА (ВЕБ-СТРАНИЦА)_______________
     _______________________________________________________________________________ -->
       <else-if type="webpage">
-        <group delimiter=". – " prefix="">
+        <group delimiter=". ">
           <group delimiter=" / ">
             <group delimiter=" : ">
-              <text macro="author-title" suffix=" [Электронный ресурс]"/>
+              <text macro="author-title"/>
               <text variable="genre"/>
             </group>
             <group delimiter=" ">
               <text macro="second-position-authors-only"/>
               <text variable="note"/>
-            </group>            
-          </group>            
-          <text variable="URL" prefix="Режим доступа: "/>
+            </group>
+          </group>
+          <text macro="year-date"/>
+          <group  delimiter=" ">
+            <text variable="URL" prefix="URL: "/>
+            <text macro="accessed" prefix="(" suffix=")"/>
+          </group>
         </group>
       </else-if>
 <!--_______________________________________________________________________________
