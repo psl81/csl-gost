@@ -30,7 +30,7 @@
         Т. 17, № 2
         Vol. 18, N 1
       Для типа "Диссертация" (Thesis) в области ответственности выводится полное имя автора.
-      Добавлено форматирование типа "Патент" (Patent)
+      Добавлено форматирование типа "Патент" (Patent), к которому также относится регистрация программы для ЭВМ.
     </summary>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>    
   </info>
@@ -352,7 +352,7 @@
     <sort>
       <key variable="citation-number"/>
     </sort>
-    <layout prefix="[" suffix="]" delimiter="; " page-range-format="">
+    <layout prefix="[" suffix="]" delimiter=", " page-range-format="">
       <text variable="citation-number"/>
       <choose>
         <if variable="locator">
@@ -374,7 +374,7 @@
     <choose>
 <!--_______________________________________________________________________________
     _______________ КНИГА (в т.ч. многотомник или отдельный том, а также __________
-    Электронный ресурс локального доступа (CD-ROM, компьютерная программа и др.))__
+    Электронный ресурс локального доступа (CD-ROM и др.))__________________________
     _______________________________________________________________________________ -->
       <if type="book">
         <group delimiter=". – ">
@@ -514,14 +514,17 @@
         </group>
       </else-if>
 <!--_______________________________________________________________________________
-    ____________________________________ Патент ___________________________________
+    ____________________ Патент и Регистрация программы для ЭВМ ___________________
     _______________________________________________________________________________ -->
       <else-if type="patent">
         <group delimiter="; " prefix="">
           <group delimiter=" / ">
             <group delimiter=" : ">
               <text variable="title"/>
-              <text variable="number" prefix="пат. "/>
+              <group delimiter=" ">
+                <text variable="genre"/>
+                <text variable="number"/>
+              </group>
               <text variable="note"/>
               <text variable="container-title"/>
             </group>
